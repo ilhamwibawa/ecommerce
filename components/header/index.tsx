@@ -8,7 +8,12 @@ const Header = (props: Props) => {
     <header className="bg-white py-3 md:py-6">
       <div className="container mx-auto px-4 md:px-0 flex items-center gap-10 justify-between">
         <div className="flex items-center gap-4">
-          <button className="md:hidden">
+          <button
+            className="md:hidden"
+            aria-label="Open Menu"
+            aria-labelledby="Open Menu"
+            role="presentation"
+          >
             <svg
               width="20"
               height="16"

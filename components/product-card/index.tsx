@@ -40,7 +40,7 @@ const ProductCard = (props: Props) => {
             <div className="flex gap-2">
               <span className="text-gray-500 line-through">${price}</span>
 
-              <Badge variant="destructive">-{discountPercentage}%</Badge>
+              <Badge>-{discountPercentage}%</Badge>
             </div>
           )}
         </div>

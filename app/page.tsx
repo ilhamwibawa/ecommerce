@@ -1,13 +1,15 @@
-"use client";
-
 import ProductCard from "@/components/product-card";
-import Rating from "@/components/rating";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { products } from "@/lib/data";
+
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import ClientReviews from "./client-reviews";
+import NewArrivals from "./new-arrivals";
+import TopSelling from "./top-selling";
 
 export default function Home() {
   return (
@@ -25,8 +27,8 @@ export default function Home() {
                 cupiditate laboriosam fugiat.
               </p>
 
-              <Button size={"lg"} className="mt-6 w-full md:w-auto">
-                Shop Now
+              <Button size={"lg"} className="mt-6 w-full md:w-auto" asChild>
+                <Link href="/shop">Shop Now</Link>
               </Button>
 
               <div className="flex justify-center md:justify-start flex-wrap mt-10 gap-10">
@@ -154,7 +156,7 @@ export default function Home() {
                   fill="white"
                   stroke="white"
                   strokeWidth="1.02419"
-                  stroke-miterlimit="2.613"
+                  strokeMiterlimit="2.613"
                 />
               </g>
               <defs>
@@ -191,21 +193,22 @@ export default function Home() {
       <section className="py-24">
         <div className="container mx-auto px-6 md:px-0">
           <h2 className="text-center font-bold text-4xl mb-12">NEW ARRIVALS</h2>
+          <React.Suspense
+            fallback={
+              <div className="flex justify-center items-center w-full h-full">
+                <Loader2 className="animate-spin" />
+              </div>
+            }
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+              <NewArrivals />
+            </div>
+          </React.Suspense>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {products &&
-              // take 4 items
-              products.slice(0, 4).map((item, index: number) => (
-                <Link href="#" key={index} passHref>
-                  <ProductCard
-                    title={item.title}
-                    image={item.image}
-                    price={item.price}
-                    rating={item.rating}
-                    discountPercentage={item.discountPercentage}
-                  />
-                </Link>
-              ))}
+          <div className="flex items-center justify-center mt-16">
+            <Button variant="outline" className="w-full max-w-[180px]">
+              View All
+            </Button>
           </div>
         </div>
       </section>
@@ -214,22 +217,75 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-0">
           <h2 className="text-center font-bold text-4xl mb-12">TOP SELLING</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {products &&
-              products.slice(4, 8).map((item, index: number) => (
-                <Link href="#" key={index} passHref>
-                  <ProductCard
-                    title={item.title}
-                    image={item.image}
-                    price={item.price}
-                    rating={item.rating}
-                    discountPercentage={item.discountPercentage}
-                  />
-                </Link>
-              ))}
+          <React.Suspense
+            fallback={
+              <div className="flex justify-center items-center w-full h-full">
+                <Loader2 className="animate-spin" />
+              </div>
+            }
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+              <TopSelling />
+            </div>
+          </React.Suspense>
+
+          <div className="flex items-center justify-center mt-16">
+            <Button variant="outline" className="w-full max-w-[180px]">
+              View All
+            </Button>
           </div>
         </div>
       </section>
+
+      <section className="mb-20">
+        <div className="container mx-auto px-6 md:px-0">
+          <div className="bg-gray-100 rounded-2xl p-4 md:p-24">
+            <h2 className="text-center font-bold text-4xl mb-12">
+              BROWSE BY DRESS STYLE
+            </h2>
+
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-7 md:gap-4">
+              <div
+                className="md:col-span-3 bg-white rounded-2xl p-4 min-h-[190px] md:min-h-[260px] relative overflow-hidden bg-left-top bg-no-repeat bg-[length:600px] md:bg-[length:800px]"
+                style={{
+                  backgroundImage: "url('/images/casual.png",
+                }}
+              >
+                <h3 className="text-xl md:text-3xl font-semibold">Casual</h3>
+              </div>
+
+              <div
+                className="md:col-span-4 bg-white rounded-2xl p-4 min-h-[190px] md:min-h-[260px] relative overflow-hidden bg-left-top bg-no-repeat bg-[length:600px] md:bg-[length:800px]"
+                style={{
+                  backgroundImage: "url('/images/formal.png",
+                }}
+              >
+                <h3 className="text-xl md:text-3xl font-semibold">Formal</h3>
+              </div>
+
+              <div
+                className="md:col-span-4 bg-white rounded-2xl p-4 min-h-[190px] md:min-h-[260px] relative overflow-hidden bg-left-top bg-no-repeat bg-[length:350px] md:bg-[length:800px]"
+                style={{
+                  backgroundImage: "url('/images/party.png",
+                }}
+              >
+                <h3 className="text-xl md:text-3xl font-semibold">Party</h3>
+              </div>
+
+              <div
+                className="md:col-span-3 bg-white rounded-2xl p-4 min-h-[190px] md:min-h-[260px] relative overflow-hidden bg-left-top bg-no-repeat bg-[length:300px] md:bg-[length:400px]"
+                style={{
+                  backgroundImage: "url('/images/gym.png",
+                }}
+              >
+                <h3 className="text-xl md:text-3xl font-semibold">Gym</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ClientReviews />
     </>
   );
 }

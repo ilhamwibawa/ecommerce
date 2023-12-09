@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Banner from "@/components/banner";
 import Link from "next/link";
+import Footer from "@/components/footer";
 
 const integralcf = localFont({
   src: [
@@ -45,6 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${integralcf.variable} ${satoshi.variable} font-sans`}>
+        <Banner className="bg-red-500">
+          The data on this website is fictitious. It is used to demonstrate a
+          website created with Next.js Commerce.
+        </Banner>
         <Banner>
           Sign up and get 20% off to your first order.{" "}
           <Link href="#" className="underline font-semibold">
@@ -54,6 +59,8 @@ export default function RootLayout({
         <Header />
 
         <main>{children}</main>
+
+        <Footer />
       </body>
     </html>
   );

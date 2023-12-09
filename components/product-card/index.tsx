@@ -5,16 +5,18 @@ import { Badge } from "../ui/badge";
 import { Eye } from "lucide-react";
 import { ProductType } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import PriceTag from "../price-tag";
+import { FallbackImage } from "../ui/fallback-image";
 
 type Props = {} & ProductType & React.HTMLAttributes<HTMLDivElement>;
 
 const ProductCard = (props: Props) => {
-  const { title, image, price, rating, discountPercentage } = props;
+  const { title, images, price, rating, discountPercentage } = props;
   return (
     <div className={cn("flex flex-col gap-3", props.className)}>
       <div className="flex relative max-h-80 rounded-2xl items-center overflow-hidden group">
-        <Image
-          src={`/images/products/${image}`}
+        <FallbackImage
+          src={images[0]}
           alt="product"
           width={500}
           height={500}
@@ -32,18 +34,7 @@ const ProductCard = (props: Props) => {
         </h3>
         <Rating value={rating} />
 
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-lg">
-            ${price - price * (discountPercentage / 100)}
-          </span>
-          {discountPercentage > 0 && (
-            <div className="flex gap-2">
-              <span className="text-gray-500 line-through">${price}</span>
-
-              <Badge>-{discountPercentage}%</Badge>
-            </div>
-          )}
-        </div>
+        <PriceTag price={price} discountPercentage={discountPercentage} />
       </div>
     </div>
   );

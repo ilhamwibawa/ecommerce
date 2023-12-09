@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import { Input } from "../ui/input";
 
 type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="bg-white py-3 md:py-6">
+    <header className="bg-white py-3 md:py-6 border-b">
       <div className="container mx-auto px-4 md:px-0 flex items-center gap-10 justify-between">
         <div className="flex items-center gap-4">
           <button
@@ -28,32 +29,32 @@ const Header = (props: Props) => {
             </svg>
           </button>
 
-          <Link href="#" className="text-2xl font-bold">
+          <Link href="/" className="text-2xl font-bold">
             SHOP.CO
           </Link>
         </div>
 
         <nav className="gap-6 hidden md:flex">
           <Link
-            href="#"
+            href="/shop"
             className="hover:border-b hover:border-b-black transition-all"
           >
             Shop
           </Link>
           <Link
-            href="#"
+            href="/shop"
             className="hover:border-b hover:border-b-black transition-all"
           >
             On Sale
           </Link>
           <Link
-            href="#"
+            href="/shop"
             className="hover:border-b hover:border-b-black transition-all"
           >
             New Arrivals
           </Link>
           <Link
-            href="#"
+            href="/shop"
             className="hover:border-b hover:border-b-black transition-all"
           >
             Brands
@@ -61,7 +62,7 @@ const Header = (props: Props) => {
         </nav>
 
         <div className="relative flex-1 hidden md:flex">
-          <div className="absolute top-3 left-4">
+          <div className="absolute top-2.5 left-4">
             <svg
               width="24"
               height="24"
@@ -76,7 +77,8 @@ const Header = (props: Props) => {
               />
             </svg>
           </div>
-          <input
+          <Input
+            inputSize="lg"
             type="text"
             placeholder="Search for products..."
             className="p-3 w-full rounded-full pl-14 bg-gray-100"

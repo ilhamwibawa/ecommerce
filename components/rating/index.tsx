@@ -3,10 +3,11 @@ import React from "react";
 
 type Props = {
   value: number;
+  showLabel?: boolean;
 };
 
 const Rating = (props: Props) => {
-  const { value } = props;
+  const { value, showLabel } = props;
 
   return (
     <div className="flex items-center gap-2">
@@ -27,11 +28,17 @@ const Rating = (props: Props) => {
         ))}
       </div>
 
-      <span className="text-sm">
-        {value}/<span className="text-gray-500">5</span>
-      </span>
+      {showLabel && (
+        <span className="text-sm">
+          {value}/<span className="text-gray-500">5</span>
+        </span>
+      )}
     </div>
   );
+};
+
+Rating.defaultProps = {
+  showLabel: true,
 };
 
 export default Rating;

@@ -1,7 +1,5 @@
-import ProductCard from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { products } from "@/lib/data";
 
 import { Loader2 } from "lucide-react";
 import Image from "next/image";

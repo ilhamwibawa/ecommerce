@@ -2,7 +2,6 @@
 
 import { FallbackImage } from "@/components/ui/fallback-image";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import React from "react";
 
 type Props = {

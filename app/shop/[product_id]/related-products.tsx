@@ -1,7 +1,6 @@
 import ProductCard from "@/components/product-card";
 import { Product, getProducts } from "@/lib/products";
 import Link from "next/link";
-import React from "react";
 
 type Props = {};
 

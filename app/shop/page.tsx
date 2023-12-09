@@ -2,6 +2,7 @@
 
 import Breadcrumb from "@/components/breadcrumb";
 import ProductCard from "@/components/product-card";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -10,24 +11,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { fetcher } from "@/lib/fetcher";
 import { Product } from "@/lib/products";
+import { Sliders } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
 import Filter from "./filter";
 import Pagination from "./pagination";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Sliders } from "lucide-react";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 export default function ShopPage() {
   const [pageIndex, setPageIndex] = React.useState(0);

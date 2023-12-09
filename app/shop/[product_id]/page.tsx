@@ -7,21 +7,18 @@ import {
 } from "@/components/ui/color-picker";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { products } from "@/lib/data";
 import ProductImages from "./product-images";
 
-import ProductCard from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
+import { Loader2 } from "lucide-react";
+import React from "react";
 import Counter from "./counter";
 import Details from "./details";
 import FAQs from "./faq";
+import RelatedProducts from "./related-products";
 import Reviews from "./reviews";
 import SelectSize from "./select-size";
-import RelatedProducts from "./related-products";
-import React from "react";
-import { Loader2 } from "lucide-react";
 
 async function getProduct(id: string) {
   const data = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`)

@@ -1,7 +1,6 @@
-import React from "react";
-import { Badge, BadgeProps } from "../ui/badge";
-import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { VariantProps, cva } from "class-variance-authority";
+import { Badge, BadgeProps } from "../ui/badge";
 
 const priceTagVariants = cva("font-semibold", {
   variants: {

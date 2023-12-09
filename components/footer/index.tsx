@@ -1,9 +1,5 @@
-import React from "react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import Link from "next/link";
 import { Facebook, Github, Instagram, Twitter } from "lucide-react";
-import { Separator } from "../ui/separator";
+import Link from "next/link";
 import {
   ApplePayIcon,
   GooglePayIcon,
@@ -11,6 +7,9 @@ import {
   PayPalIcon,
   VisaIcon,
 } from "../icon";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Separator } from "../ui/separator";
 
 type Props = {};
 

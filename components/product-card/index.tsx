@@ -1,14 +1,12 @@
-import Image from "next/image";
-import React from "react";
-import Rating from "../rating";
-import { Badge } from "../ui/badge";
-import { Eye } from "lucide-react";
-import { ProductType } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { Eye } from "lucide-react";
+import React from "react";
 import PriceTag from "../price-tag";
+import Rating from "../rating";
 import { FallbackImage } from "../ui/fallback-image";
+import { Product } from "@/lib/products";
 
-type Props = {} & ProductType & React.HTMLAttributes<HTMLDivElement>;
+type Props = {} & Product & React.HTMLAttributes<HTMLDivElement>;
 
 const ProductCard = (props: Props) => {
   const { title, images, price, rating, discountPercentage } = props;

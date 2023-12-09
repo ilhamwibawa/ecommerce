@@ -3,7 +3,6 @@ import ReviewCard from "@/components/review-card";
 import useCarousel from "@/hooks/useCarousel";
 import { reviews } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import React from "react";
 
 type Props = {};
 

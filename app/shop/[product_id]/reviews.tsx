@@ -9,12 +9,7 @@ import {
 } from "@/components/ui/select";
 import { reviews } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import {
-  ChevronDown,
-  MoreHorizontal,
-  MoreVertical,
-  Sliders,
-} from "lucide-react";
+import { MoreHorizontal, Sliders } from "lucide-react";
 
 type Props = {};
 

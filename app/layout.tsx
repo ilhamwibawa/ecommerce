@@ -48,7 +48,14 @@ export default function RootLayout({
       <body className={`${integralcf.variable} ${satoshi.variable} font-sans`}>
         <Banner className="bg-red-500">
           The data on this website is fictitious. It is used to demonstrate a
-          website created with Next.js Commerce.
+          website created with Next.js Commerce. See the source code at{" "}
+          <a
+            className="underline"
+            href="https://github.com/ilhamwibawa/ecommerce"
+          >
+            Github
+          </a>
+          .
         </Banner>
         <Banner>
           Sign up and get 20% off to your first order.{" "}

@@ -27,6 +27,7 @@ const Counter = (props: Props) => {
       )}
     >
       <button
+        type="button"
         className="w-8 h-8 flex items-center justify-center text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         onClick={() => setCount(count - 1)}
         disabled={count === min}
@@ -35,6 +36,7 @@ const Counter = (props: Props) => {
       </button>
       <span className="text-base">{count}</span>
       <button
+        type="button"
         className="w-8 h-8 flex items-center justify-center text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         onClick={() => setCount(count + 1)}
         disabled={max ? count === max : false}

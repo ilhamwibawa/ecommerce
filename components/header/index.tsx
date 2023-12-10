@@ -1,9 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Input } from "../ui/input";
+import React, { useEffect } from "react";
 
 type Props = {};
 
 const Header = (props: Props) => {
+  // get cart from localstorage
+  const cart = localStorage.getItem("cart");
+  const cartItems = cart ? JSON.parse(cart) : [];
+  const [cartItemsCount, setCartItemsCount] = React.useState(0);
+
+  const totalItems = cartItems.reduce(
+    (acc: number, item: any) => acc + item.quantity,
+    0
+  );
+
+  useEffect(() => {
+    setCartItemsCount(totalItems);
+  }, [totalItems]);
+
   return (
     <header className="bg-white py-3 md:py-6 border-b">
       <div className="container mx-auto px-4 md:px-0 flex items-center gap-10 justify-between">
@@ -99,7 +116,7 @@ const Header = (props: Props) => {
               />
             </svg>
           </div>
-          <div>
+          <div className="relative">
             <svg
               width="24"
               height="24"
@@ -112,6 +129,11 @@ const Header = (props: Props) => {
                 fill="black"
               />
             </svg>
+            {cartItemsCount > 0 && (
+              <div className="absolute -top-1 -right-1 bg-red-500 rounded-full w-4 h-4 flex items-center justify-center text-white text-xs">
+                {cartItemsCount}
+              </div>
+            )}
           </div>
 
           <div>

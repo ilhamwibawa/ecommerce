@@ -39,6 +39,7 @@ const SelectSize = (props: Props) => {
     <div className="flex gap-2">
       {sizes.map((size) => (
         <Button
+          type="button"
           key={size.name}
           variant={"secondary"}
           className={cn("text-sm", {

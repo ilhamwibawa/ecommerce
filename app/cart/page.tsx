@@ -27,7 +27,7 @@ export default function CartPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2">
           <div className="border rounded-lg px-4">
-            {cart.length === 0 ? (
+            {cart?.length === 0 ? (
               <div className="text-center">
                 <p className="text-gray-500">
                   Your cart is empty.{" "}
@@ -39,7 +39,7 @@ export default function CartPage() {
               </div>
             ) : (
               <div className="divide-y">
-                {cart.map((item) => (
+                {cart?.map((item) => (
                   <div
                     key={item.id}
                     className="flex items-stretch justify-between py-4"
@@ -53,11 +53,11 @@ export default function CartPage() {
                         className="rounded object-cover"
                       />
                       <div>
-                        <p className="font-semibold">{item.title}</p>
-                        <p>
+                        <div className="font-semibold">{item.title}</div>
+                        <div>
                           <span>Size:</span>
                           <span className="text-gray-600"> {item.size}</span>
-                        </p>
+                        </div>
                         <div className="flex items-center gap-2">
                           <span>Color:</span>
                           <span className="text-gray-600">
@@ -69,11 +69,11 @@ export default function CartPage() {
                             ></div>
                           </span>
                         </div>
-                        <p className=" mt-4">
+                        <div className=" mt-4">
                           <span className="font-semibold">
                             ${item.price.toFixed(2)}
                           </span>
-                        </p>
+                        </div>
                       </div>
                     </div>
                     <div className="flex  flex-col h-auto items-end justify-between">
@@ -112,7 +112,7 @@ export default function CartPage() {
               <span>
                 $
                 {cart
-                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  ?.reduce((acc, item) => acc + item.price * item.quantity, 0)
                   .toFixed(2)}
               </span>
             </div>
@@ -134,7 +134,7 @@ export default function CartPage() {
               <span>
                 $
                 {cart
-                  .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                  ?.reduce((acc, item) => acc + item.price * item.quantity, 0)
                   .toFixed(2)}
               </span>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import useLocalStorage from "@/hooks/useLocalStorage";
 import { Product } from "@/lib/products";
 import { createContext, useEffect, useState } from "react";
 
@@ -27,11 +28,13 @@ type CartProviderProps = {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   // get cart from local storage
-  const cartFromLocalStorage = localStorage.getItem("cart");
 
-  const [cart, setCart] = useState<ProductInCart[]>(
-    cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : []
-  );
+  const [cart, setCart] = useLocalStorage("cart", []) as [
+    ProductInCart[],
+    (
+      value: ProductInCart[] | ((prev: ProductInCart[]) => ProductInCart[])
+    ) => void
+  ];
 
   const addToCart = (product: ProductInCart) => {
     // check if product already in cart
@@ -57,7 +60,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems = cart
+    ? cart.reduce((acc, item) => acc + item.quantity, 0)
+    : 0;
 
   useEffect(() => {
     if (cart) {

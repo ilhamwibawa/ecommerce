@@ -273,7 +273,7 @@ const styles: MenuTreeItem[] = [
 const Filter = (props: Props) => {
   const [sizeValue, setSizeValue] = React.useState<string[]>([]);
   return (
-    <ScrollArea className="lg:h-auto h-[90vh] pr-6 lg:pr-0">
+    <ScrollArea className="lg:h-auto h-[70vh] pr-6 lg:pr-0">
       <div className="flex items-center justify-between">
         <p className="font-semibold text-xl">Filters</p>
 

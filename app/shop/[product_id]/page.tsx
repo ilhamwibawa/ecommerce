@@ -29,6 +29,8 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { useCart } from "@/hooks/useCart";
+import { ProductInCart } from "@/context/cart-context";
 
 const crumbs: Crumb[] = [
   {
@@ -106,36 +108,17 @@ export default function DetailProduct() {
     },
   });
 
-  function addToCart() {
+  const { addToCart } = useCart();
+
+  function onSubmit() {
     const { color, size, quantity } = form.getValues();
 
-    // add to localstorage
-    const cart = localStorage.getItem("cart");
-    const cartItems = cart ? JSON.parse(cart) : [];
-
-    console.log("cart items", cartItems);
-
-    // check if product is already in cart
-    const existingProduct = cartItems.find(
-      (item: any) => item.id === parseInt(product_id as string)
-    );
-    console.log("is existing product", existingProduct);
-
-    if (existingProduct) {
-      // update quantity
-      existingProduct.quantity += quantity;
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-      return;
-    }
-
-    cartItems.push({
+    addToCart({
       ...product,
       color,
       size,
       quantity,
-    });
-
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    } as ProductInCart);
   }
 
   if (isLoading) {
@@ -172,7 +155,7 @@ export default function DetailProduct() {
 
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(addToCart)}
+                onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-6"
               >
                 <div className="space-y-3">

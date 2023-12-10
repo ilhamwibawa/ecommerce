@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import localFont from "next/font/local";
 import Link from "next/link";
 import "./globals.css";
+import { CartProvider } from "@/context/cart-context";
 
 const integralcf = localFont({
   src: [
@@ -46,28 +47,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${integralcf.variable} ${satoshi.variable} font-sans`}>
-        <Banner className="bg-red-500">
-          The data on this website is fictitious. It is used to demonstrate a
-          website created with Next.js Commerce. See the source code at{" "}
-          <a
-            className="underline"
-            href="https://github.com/ilhamwibawa/ecommerce"
-          >
-            Github
-          </a>
-          .
-        </Banner>
-        <Banner>
-          Sign up and get 20% off to your first order.{" "}
-          <Link href="#" className="underline font-semibold">
-            Sign Up Now
-          </Link>
-        </Banner>
-        <Header />
+        <CartProvider>
+          <Banner className="bg-red-500">
+            The data on this website is fictitious. It is used to demonstrate a
+            website created with Next.js Commerce. See the source code at{" "}
+            <a
+              className="underline"
+              href="https://github.com/ilhamwibawa/ecommerce"
+            >
+              Github
+            </a>
+            .
+          </Banner>
+          <Banner>
+            Sign up and get 20% off to your first order.{" "}
+            <Link href="#" className="underline font-semibold">
+              Sign Up Now
+            </Link>
+          </Banner>
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <Footer />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

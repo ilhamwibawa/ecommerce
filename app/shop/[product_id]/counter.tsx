@@ -9,11 +9,12 @@ type Props = {
   onValueChange?: (value: number) => void;
   min?: number;
   max?: number;
+  defaultValue?: number;
 };
 
 const Counter = (props: Props) => {
-  const { min = 1, max, onValueChange } = props;
-  const [count, setCount] = React.useState(min);
+  const { min = 1, max, onValueChange, defaultValue } = props;
+  const [count, setCount] = React.useState(defaultValue || min);
 
   React.useEffect(() => {
     onValueChange?.(count);
